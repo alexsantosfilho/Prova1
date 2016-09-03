@@ -15,7 +15,7 @@ AMyHUD::AMyHUD() {
 	}
 
 	static ConstructorHelpers::FObjectFinder<UTexture2D>
-		Texture(TEXT("Texture2D'/Game/StarterContent/Textures/Green_Textureee.Green_Textureee'"));
+		Texture(TEXT("Texture2D'/Game/Blue_Textureee.Blue_Textureee'"));
 	if (Texture.Succeeded()) {
 		MyTexture = Texture.Object;
 	}
