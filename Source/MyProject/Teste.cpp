@@ -5,7 +5,6 @@
 #include "MyCharacter.h"
 #include "ProjectActor.h"
 
-
 // Sets default values
 ATeste::ATeste()
 {
@@ -45,9 +44,16 @@ void ATeste::Tick( float DeltaTime )
 
 }
 
-
-
 void ATeste::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult) {
+	if ((OtherActor != nullptr) && (OtherActor != this) &&
+		(OtherComp != nullptr) && (OtherActor->IsA(AMyCharacter::StaticClass()))) {
+
+		AMyCharacter* MyCharacter = Cast<AMyCharacter>(OtherActor);
+		MyCharacter->SetColetavel(MyCharacter->GetColetavel() - DamageAmount);
+		MyCharacter->OnDeath();
+		UE_LOG(LogTemp, Warning, TEXT("Coletavel = %d"), MyCharacter->GetColetavel());
+
+	}
 	if (OtherActor->IsA(AProjectActor::StaticClass())) {
 
 		Destroy();
