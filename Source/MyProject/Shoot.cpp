@@ -82,7 +82,7 @@ void AShoot::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherAc
 
 		Destroy();
 
-		//UE_LOG(LogTemp, Warning, TEXT("Encostou"));
+		UE_LOG(LogTemp, Warning, TEXT("Encostou"));
 	}
 
 }

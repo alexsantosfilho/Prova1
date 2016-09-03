@@ -3,6 +3,8 @@
 #include "MyProject.h"
 #include "Teste.h"
 #include "MyCharacter.h"
+#include "ProjectActor.h"
+
 
 // Sets default values
 ATeste::ATeste()
@@ -43,21 +45,19 @@ void ATeste::Tick( float DeltaTime )
 
 }
 
+
+
 void ATeste::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult) {
-	if ((OtherActor != nullptr) && (OtherActor != this) &&
-		(OtherComp != nullptr) && (OtherActor->IsA(AMyCharacter::StaticClass()))) {
+	if (OtherActor->IsA(AProjectActor::StaticClass())) {
 
-		AMyCharacter* MyCharacter = Cast<AMyCharacter>(OtherActor);
-		MyCharacter->SetColetavel(MyCharacter->GetColetavel() - DamageAmount);
-		MyCharacter->OnDeath();
-		UE_LOG(LogTemp, Warning, TEXT("Coletavel = %d"), MyCharacter->GetColetavel());
-
+		Destroy();
+		UE_LOG(LogTemp, Warning, TEXT("Destruiuuukakoaksj"));
 	}
 }
 
-void ATeste::OnHit(AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit) {
+//void ATeste::OnHit(AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit) {
 	//if (OtherActor && (OtherActor != this) && OtherComp)
 	//{
 	//OtherComp->AddImpulseAtLocation(AMyActor->Velocity * 100.0f, Hit.ImpactPoint);
 	//}
-}
+//}

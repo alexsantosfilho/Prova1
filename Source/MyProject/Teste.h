@@ -29,11 +29,15 @@ private:
 		float RunningTime;
 	UPROPERTY(EditAnywhere)
 		float DamageAmount = 1;
-	UFUNCTION()
-		void OnHit(class AActor* OtherActor, class UPrimitiveComponent* OtherComp,
-			FVector NormalImpulse, const FHitResult& Hit);
-	UFUNCTION()
-		void OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+	//UFUNCTION()
+		//void OnHit(class AActor* OtherActor, class UPrimitiveComponent* OtherComp,
+//			FVector NormalImpulse, const FHitResult& Hit);
 	
+		UFUNCTION()
+		void OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
+			int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+
+
 	
 };
