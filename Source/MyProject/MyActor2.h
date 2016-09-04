@@ -27,14 +27,19 @@ private:
 	UPROPERTY(EditAnywhere)
 		UStaticMeshComponent* MeshComp;
 	UPROPERTY(VisibleAnywhere, Category = Tick)
-		float RunningTime = 1;
+		float RunningTime;
 	UPROPERTY(VisibleAnywhere, Category = Tick)
-		float RunningTime2 = 2;
+		float RunningTime2;
 	UPROPERTY(VisibleAnywhere, Category = Tick)
 		int Cont = 0;
 
 	UPROPERTY(VisibleAnywhere, Category = Tick)
-		float RunningTime3;
+		float RunningTime3 = 5.0F;
+	UPROPERTY(VisibleAnywhere, Category = Tick)
+		float RunningTime4;
+	UPROPERTY(VisibleAnywhere, Category = Tick)
+		float RunningTime5;
+	float DamageAmount = 3.0f;
 
 	int Cont2 = 10;
 
@@ -44,6 +49,9 @@ private:
 	float CountupTime;
 
 	void TimerManager();
+	UFUNCTION()
+		void OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
 
 	UFUNCTION()
 		void OnHit(class AActor* OtherActor, class UPrimitiveComponent* OtherComp,

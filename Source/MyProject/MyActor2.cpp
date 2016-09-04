@@ -3,6 +3,7 @@
 #include "MyProject.h"
 #include "MyActor2.h"
 #include "Objetob.h"
+#include "MyCharacter.h"
 
 
 // Sets default values
@@ -40,7 +41,11 @@ void AMyActor2::Tick(float DeltaTime)
 	FVector LocalizacaoAtual = GetActorLocation();
 	CountdownTime -= 1.0f;
 	RunningTime3 += DeltaTime;
-	float ObjetobTime = 1.0f * RunningTime3;
+	float ObjetobTime = RunningTime3;
+	RunningTime4 += DeltaTime;
+	float ObjetobTime2 =  RunningTime4;
+	RunningTime5 += DeltaTime;
+	float ObjetobTime5 = RunningTime5;
 
 	if (ObjetobTime > 3.0f) {
 		FActorSpawnParameters SpawnParameters;
@@ -60,22 +65,27 @@ void AMyActor2::Tick(float DeltaTime)
 	}
 
 
-	if (CountdownTime <= 0.0f, LocalizacaoAtual.X != LocalizacaoAtual.Y) {
-		float DeltaWidth = (FMath::Sin(RunningTime + DeltaTime) - FMath::Sin(RunningTime));
-		LocalizacaoAtual.X += DeltaWidth * 150.0f;
-		RunningTime += DeltaTime;
+	if (ObjetobTime2 > 3.5f) {
+		float DeltaWidth = (FMath::Sin(RunningTime4 + DeltaTime) - FMath::Sin(RunningTime4));
+		LocalizacaoAtual.Y += DeltaWidth * 150.0f;
+		RunningTime4 += DeltaTime;
 		SetActorLocation(LocalizacaoAtual);
+		RunningTime4 = 0.0f;
+		//Destroy();
+
 	}
 
-	if (CountdownTime <= 0.0f, LocalizacaoAtual.Y != LocalizacaoAtual.X) {
-		float DeltaWidth = (FMath::Sin(RunningTime + DeltaTime) - FMath::Sin(RunningTime));
-		LocalizacaoAtual.Y += DeltaWidth * 150.0f;
-		RunningTime += DeltaTime;
-		SetActorLocation(LocalizacaoAtual);
+	//if (ObjetobTime5 > 3.0f) {
+		//float DeltaWidth = (FMath::Sin(RunningTime5 + DeltaTime) - FMath::Sin(RunningTime5));
+		//LocalizacaoAtual.X += DeltaWidth * 150.0f;
+		//RunningTime5 += DeltaTime;
+		//SetActorLocation(LocalizacaoAtual);
+		//RunningTime5 = 0.0f;
+
 		//Destroy();
 
 
-	}
+//	}
 
 }
 
@@ -107,4 +117,20 @@ void AMyActor2::OnHit(AActor* OtherActor, UPrimitiveComponent* OtherComp, FVecto
 }
 
 
+void AMyActor2::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult) {
+
+	if ((OtherActor != nullptr) && (OtherActor != this) &&
+		(OtherComp != nullptr) && (OtherActor->IsA(AMyCharacter::StaticClass()))) {
+
+		AMyCharacter* MyCharacter = Cast<AMyCharacter>(OtherActor);
+		MyCharacter->SetColetavel(MyCharacter->GetColetavel() - DamageAmount);
+		MyCharacter->OnDeath();
+		UE_LOG(LogTemp, Warning, TEXT("Life = %d"), MyCharacter->GetColetavel());
+
+		Destroy();
+
+		UE_LOG(LogTemp, Warning, TEXT("Encostou"));
+	}
+
+}
 

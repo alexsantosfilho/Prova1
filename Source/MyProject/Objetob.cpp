@@ -47,7 +47,7 @@ AObjetob::AObjetob()
 	ProjectileMovement->InitialSpeed = 1000.0f;
 	ProjectileMovement->MaxSpeed = 1000.0f;
 
-	InitialLifeSpan = 5.0f;
+	InitialLifeSpan = 2.2f;
 }
 
 // Called when the game starts or when spawned
@@ -68,7 +68,7 @@ void AObjetob::Tick( float DeltaTime )
 	RunningTime3 += DeltaTime;
 	float DestroyTime = 1.0f * RunningTime3;
 	if (DestroyTime > 1.5f) {
-		Destroy();
+		//Destroy();
 	}
 }
 
