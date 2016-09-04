@@ -2,6 +2,7 @@
 
 #include "MyProject.h"
 #include "MyActor2.h"
+#include "Objetob.h"
 
 
 // Sets default values
@@ -24,7 +25,7 @@ AMyActor2::AMyActor2()
 void AMyActor2::BeginPlay()
 {
 	Super::BeginPlay();
-	GetWorldTimerManager().SetTimer(CountdownTimerHandle, this, &AMyActor2::TimerManager, 4.0f, true);
+	//GetWorldTimerManager().SetTimer(CountdownTimerHandle, this, &AMyActor2::TimerManager, 4.0f, true);
 
 
 
@@ -38,6 +39,26 @@ void AMyActor2::Tick(float DeltaTime)
 
 	FVector LocalizacaoAtual = GetActorLocation();
 	CountdownTime -= 1.0f;
+	RunningTime3 += DeltaTime;
+	float ObjetobTime = 1.0f * RunningTime3;
+
+	if (ObjetobTime > 2.0f) {
+		FActorSpawnParameters SpawnParameters;
+		UWorld* World = GetWorld();
+		if (World != nullptr) {
+			FRotator Rotation = MeshComp->GetComponentRotation();
+			AObjetob* Proj = World->SpawnActor<AObjetob>
+				(GetActorLocation(), Rotation,
+					SpawnParameters);
+			if (Proj != nullptr) {
+
+				RunningTime3 = 0.0f;
+			}
+
+		}
+
+	}
+
 
 	if (CountdownTime <= 0.0f, LocalizacaoAtual.X != LocalizacaoAtual.Y) {
 		float DeltaWidth = (FMath::Sin(RunningTime + DeltaTime) - FMath::Sin(RunningTime));

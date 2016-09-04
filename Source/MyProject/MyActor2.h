@@ -33,6 +33,9 @@ private:
 	UPROPERTY(VisibleAnywhere, Category = Tick)
 		int Cont = 0;
 
+	UPROPERTY(VisibleAnywhere, Category = Tick)
+		float RunningTime3;
+
 	int Cont2 = 10;
 
 	FTimerHandle CountdownTimerHandle;
