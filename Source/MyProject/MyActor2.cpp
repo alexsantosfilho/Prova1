@@ -42,7 +42,7 @@ void AMyActor2::Tick(float DeltaTime)
 	RunningTime3 += DeltaTime;
 	float ObjetobTime = 1.0f * RunningTime3;
 
-	if (ObjetobTime > 2.0f) {
+	if (ObjetobTime > 3.0f) {
 		FActorSpawnParameters SpawnParameters;
 		UWorld* World = GetWorld();
 		if (World != nullptr) {
