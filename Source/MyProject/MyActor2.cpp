@@ -73,7 +73,7 @@ void AMyActor2::TimerManager() {
 	if (CountdownTime <= 0.0f) {
 		GetWorldTimerManager().ClearTimer(CountdownTimerHandle);
 		UE_LOG(LogTemp, Warning, TEXT(" TIME saida"));
-		Destroy();
+		//Destroy();
 	}
 }
 
