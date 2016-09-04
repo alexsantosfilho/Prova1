@@ -1,6 +1,8 @@
 #include "MyProject.h"
 #include "Shoot.h"
 #include "MyCharacter.h"
+#include "Canh.h"
+
 
 
 // Sets default values
@@ -63,11 +65,11 @@ void AShoot::Tick(float DeltaTime)
 	Location.Z = DefaultZ;
 	SetActorLocation(Location);
 
-	RunningTime += DeltaTime;
-	float DestroyTime = 1.0f * RunningTime;
-	if (DestroyTime > 1.0f) {
-		Destroy();
-	}
+	//RunningTime += DeltaTime;
+	//float DestroyTime = 1.0f * RunningTime;
+	//if (DestroyTime > 1.0f) {
+	//	Destroy();
+	//}
 }
 
 void AShoot::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult) {

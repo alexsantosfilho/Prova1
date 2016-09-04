@@ -22,9 +22,13 @@ public:
 
 private:
 
+	UPROPERTY(EditAnywhere)
 	UBoxComponent* Root;
+	UPROPERTY(EditAnywhere)
 	UStaticMeshComponent* MeshComp;
+	UPROPERTY(EditAnywhere)
 	UParticleSystemComponent* Particle;
+	UPROPERTY(EditAnywhere)
 	UProjectileMovementComponent* ProjectileMovement;
 
 	float DefaultZ;
