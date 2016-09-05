@@ -39,7 +39,7 @@ private:
 		float RunningTime4;
 	UPROPERTY(VisibleAnywhere, Category = Tick)
 		float RunningTime5;
-	float DamageAmount = 3.0f;
+	float DamageAmount = 1;
 
 	int Cont2 = 10;
 
@@ -47,15 +47,15 @@ private:
 
 	float CountdownTime;
 	float CountupTime;
-
+	float DefaultZ;
 	void TimerManager();
 	UFUNCTION()
 		void OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
 
-	UFUNCTION()
-		void OnHit(class AActor* OtherActor, class UPrimitiveComponent* OtherComp,
-			FVector NormalImpulse, const FHitResult& Hit);
+	//UFUNCTION()
+		//void OnHit(class AActor* OtherActor, class UPrimitiveComponent* OtherComp,
+			//FVector NormalImpulse, const FHitResult& Hit);
 
 
 };

@@ -3,6 +3,7 @@
 #include "MyProject.h"
 #include "ProjectActor.h"
 #include "Teste.h"
+#include "MyActor2.h"
 #include "MyActor.h"
 #include "MyCharacter.h"
 
@@ -78,6 +79,16 @@ void AProjectActor::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* 
 		ATeste* MyCharacter = Cast<ATeste>(OtherActor);
 
 		UE_LOG(LogTemp, Warning, TEXT("Destruiu Parabens"));
+		Destroy();
+
+	}
+
+	if ((OtherActor != nullptr) && (OtherActor != this) &&
+		(OtherComp != nullptr) && (OtherActor->IsA(AMyActor2::StaticClass()))) {
+
+		AMyActor2* MyCharacter = Cast<AMyActor2>(OtherActor);
+
+		UE_LOG(LogTemp, Warning, TEXT("Destruiu Parabenswww"));
 		Destroy();
 
 	}

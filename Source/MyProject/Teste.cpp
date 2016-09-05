@@ -57,7 +57,7 @@ void ATeste::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherAc
 	if (OtherActor->IsA(AProjectActor::StaticClass())) {
 
 		Destroy();
-		UE_LOG(LogTemp, Warning, TEXT("Destruiuuukakoaksj"));
+		UE_LOG(LogTemp, Warning, TEXT("NORMAL"));
 	}
 }
 

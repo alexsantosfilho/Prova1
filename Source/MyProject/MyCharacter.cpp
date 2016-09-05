@@ -7,6 +7,7 @@
 
 
 
+
 // Sets default values
 AMyCharacter::AMyCharacter()
 {
@@ -131,10 +132,29 @@ int AMyCharacter::GetColetavel() {
 }
 
 
+void AMyCharacter::SetLColetavel(int NewLColetavel) {
+	LColetavel = NewLColetavel;
+
+}
+int AMyCharacter::GetLColetavel() {
+	return LColetavel;
+}
+
+
 void AMyCharacter::OnDeath() {
 	if (Coletavel <= 0) {
 		FVector InitialLocation(-3426.8f, 89.0f, 128.0f);
 		Coletavel = 3;
+		SetActorLocation(InitialLocation);
+	}
+
+}
+
+
+void AMyCharacter::OnDeath1() {
+	if (LColetavel <= 0) {
+		FVector InitialLocation(-3426.8f, 89.0f, 128.0f);
+		LColetavel = 10;
 		SetActorLocation(InitialLocation);
 	}
 

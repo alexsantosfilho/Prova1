@@ -20,8 +20,9 @@ public:
 
 
 private:
-
+	UPROPERTY(EditAnywhere)
 	UShapeComponent* Root;
+	UPROPERTY(EditAnywhere)
 	UStaticMeshComponent* MeshComp;
 
 	UPROPERTY(VisibleAnywhere, Category = Tick)

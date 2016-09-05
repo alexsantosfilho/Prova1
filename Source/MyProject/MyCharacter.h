@@ -28,8 +28,14 @@ public:
 	
 	void SetColetavel(int NewColetavel);
 	int GetColetavel();
+
+	void SetLColetavel(int NewLColetavel);
+	int GetLColetavel();
 	
 	void OnDeath();
+
+	void OnDeath1();
+
 
 
 	void RotacionarEmZ(float eixoHorizontal);
@@ -50,6 +56,8 @@ private:
 	UPROPERTY(EditAnywhere)
 
 	int Coletavel = 3;
+	int LColetavel = 3;
+
 
 	UFUNCTION()
 		void OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);

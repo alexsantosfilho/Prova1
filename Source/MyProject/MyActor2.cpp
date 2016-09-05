@@ -4,6 +4,8 @@
 #include "MyActor2.h"
 #include "Objetob.h"
 #include "MyCharacter.h"
+#include "ProjectActor.h"
+
 
 
 // Sets default values
@@ -43,7 +45,7 @@ void AMyActor2::Tick(float DeltaTime)
 	RunningTime3 += DeltaTime;
 	float ObjetobTime = RunningTime3;
 	RunningTime4 += DeltaTime;
-	float ObjetobTime2 =  RunningTime4;
+	float ObjetobTime2 = RunningTime4;
 	RunningTime5 += DeltaTime;
 	float ObjetobTime5 = RunningTime5;
 
@@ -76,16 +78,16 @@ void AMyActor2::Tick(float DeltaTime)
 	}
 
 	//if (ObjetobTime5 > 3.0f) {
-		//float DeltaWidth = (FMath::Sin(RunningTime5 + DeltaTime) - FMath::Sin(RunningTime5));
-		//LocalizacaoAtual.X += DeltaWidth * 150.0f;
-		//RunningTime5 += DeltaTime;
-		//SetActorLocation(LocalizacaoAtual);
-		//RunningTime5 = 0.0f;
+	//float DeltaWidth = (FMath::Sin(RunningTime5 + DeltaTime) - FMath::Sin(RunningTime5));
+	//LocalizacaoAtual.X += DeltaWidth * 150.0f;
+	//RunningTime5 += DeltaTime;
+	//SetActorLocation(LocalizacaoAtual);
+	//RunningTime5 = 0.0f;
 
-		//Destroy();
+	//Destroy();
 
 
-//	}
+	//	}
 
 }
 
@@ -109,28 +111,27 @@ void AMyActor2::TimerManager() {
 }
 
 
-void AMyActor2::OnHit(AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit) {
+//void AMyActor2::OnHit(AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit) {
 	//if (OtherActor && (OtherActor != this) && OtherComp)
 	//{
 	//OtherComp->AddImpulseAtLocation(AMyActor->Velocity * 100.0f, Hit.ImpactPoint);
 	//}
-}
+//}
 
 
 void AMyActor2::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult) {
-
 	if ((OtherActor != nullptr) && (OtherActor != this) &&
 		(OtherComp != nullptr) && (OtherActor->IsA(AMyCharacter::StaticClass()))) {
 
 		AMyCharacter* MyCharacter = Cast<AMyCharacter>(OtherActor);
 		MyCharacter->SetColetavel(MyCharacter->GetColetavel() - DamageAmount);
 		MyCharacter->OnDeath();
-		UE_LOG(LogTemp, Warning, TEXT("Life = %d"), MyCharacter->GetColetavel());
+		UE_LOG(LogTemp, Warning, TEXT("Coletavel = %d"), MyCharacter->GetColetavel());
+
+	}
+	if (OtherActor->IsA(AProjectActor::StaticClass())) {
 
 		Destroy();
-
-		UE_LOG(LogTemp, Warning, TEXT("Encostou"));
+		UE_LOG(LogTemp, Warning, TEXT("NORMAL"));
 	}
-
 }
-

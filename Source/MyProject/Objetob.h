@@ -31,6 +31,9 @@ private:
 	UPROPERTY(EditAnywhere)
 		UProjectileMovementComponent* ProjectileMovement;
 
+	float RunningTime;
+	UPROPERTY(VisibleAnywhere, Category = Tick)
+
 	float DefaultZ;
 	float DamageAmount = 3.0f;
 	UFUNCTION()

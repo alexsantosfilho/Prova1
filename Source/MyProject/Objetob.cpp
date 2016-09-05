@@ -44,8 +44,8 @@ AObjetob::AObjetob()
 
 	ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileMovement"));
 	ProjectileMovement->UpdatedComponent = Root;
-	ProjectileMovement->InitialSpeed = 1000.0f;
-	ProjectileMovement->MaxSpeed = 1000.0f;
+	ProjectileMovement->InitialSpeed = 250.0f;
+	ProjectileMovement->MaxSpeed = 250.0f;
 
 	InitialLifeSpan = 2.2f;
 }
@@ -67,8 +67,8 @@ void AObjetob::Tick( float DeltaTime )
 
 	RunningTime3 += DeltaTime;
 	float DestroyTime = 1.0f * RunningTime3;
-	if (DestroyTime > 1.5f) {
-		//Destroy();
+	if (DestroyTime > 2.0f) {
+		Destroy();
 	}
 }
 
@@ -78,11 +78,13 @@ void AObjetob::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* Other
 		(OtherComp != nullptr) && (OtherActor->IsA(AMyCharacter::StaticClass()))) {
 
 		AMyCharacter* MyCharacter = Cast<AMyCharacter>(OtherActor);
+		
+		
 		MyCharacter->SetColetavel(MyCharacter->GetColetavel() - DamageAmount);
 		MyCharacter->OnDeath();
 		UE_LOG(LogTemp, Warning, TEXT("Life = %d"), MyCharacter->GetColetavel());
 
-		Destroy();
+		//Destroy();
 
 		UE_LOG(LogTemp, Warning, TEXT("Encostou"));
 	}
