@@ -41,7 +41,7 @@ void AMyHUD::DrawHUD() {
 
 	FString LColetavelString = FString::Printf(TEXT("Coletavel: %d"),
 		MyCharacter->GetLColetavel());
-	DrawText(LColetavelString, FColor::Blue, 50, 100, HUDFont);
+	DrawText(LColetavelString, FColor::Blue, 50, 140, HUDFont);
 
 	
 
@@ -57,7 +57,7 @@ void AMyHUD::DrawHUD() {
 
 
 
-	DrawTexture(MyTexture2, 200, 100, MyCharacter->GetLColetavel() * 35,
+	DrawTexture(MyTexture2, 200, 140, MyCharacter->GetLColetavel() * 35,
 		MyTexture2->GetSizeY(), 0, 0, MyCharacter->GetLColetavel() * 4,
 		MyTexture2->GetSizeY(), FLinearColor::White,
 		EBlendMode::BLEND_Translucent, 1.0f, false, 0.0f,

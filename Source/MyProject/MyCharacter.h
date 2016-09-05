@@ -56,7 +56,7 @@ private:
 	UPROPERTY(EditAnywhere)
 
 	int Coletavel = 3;
-	int LColetavel = 3;
+	int LColetavel = 0;
 
 
 	UFUNCTION()
