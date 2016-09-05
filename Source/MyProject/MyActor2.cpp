@@ -5,6 +5,7 @@
 #include "Objetob.h"
 #include "MyCharacter.h"
 #include "ProjectActor.h"
+#include "Teste.h"
 
 
 
@@ -120,6 +121,12 @@ void AMyActor2::TimerManager() {
 
 
 void AMyActor2::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult) {
+	
+	if (OtherActor->IsA(AProjectActor::StaticClass())) {
+
+		Destroy();
+		UE_LOG(LogTemp, Warning, TEXT("Destrui o bosss"));
+	}
 	if ((OtherActor != nullptr) && (OtherActor != this) &&
 		(OtherComp != nullptr) && (OtherActor->IsA(AMyCharacter::StaticClass()))) {
 
@@ -129,9 +136,5 @@ void AMyActor2::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* Othe
 		UE_LOG(LogTemp, Warning, TEXT("Coletavel = %d"), MyCharacter->GetColetavel());
 
 	}
-	if (OtherActor->IsA(AProjectActor::StaticClass())) {
-
-		Destroy();
-		UE_LOG(LogTemp, Warning, TEXT("NORMAL"));
-	}
+	
 }

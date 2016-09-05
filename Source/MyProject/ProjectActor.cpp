@@ -84,11 +84,21 @@ void AProjectActor::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* 
 	}
 
 	if ((OtherActor != nullptr) && (OtherActor != this) &&
+		(OtherComp != nullptr) && (OtherActor->IsA(AProjectActor::StaticClass()))) {
+
+		AProjectActor* MyCharacter = Cast<AProjectActor>(OtherActor);
+
+		UE_LOG(LogTemp, Warning, TEXT("Destruiu Parabens"));
+		Destroy();
+
+	}
+
+	if ((OtherActor != nullptr) && (OtherActor != this) &&
 		(OtherComp != nullptr) && (OtherActor->IsA(AMyActor2::StaticClass()))) {
 
 		AMyActor2* MyCharacter = Cast<AMyActor2>(OtherActor);
 
-		UE_LOG(LogTemp, Warning, TEXT("Destruiu Parabenswww"));
+		UE_LOG(LogTemp, Warning, TEXT("Destruiu a bala no boss"));
 		Destroy();
 
 	}
