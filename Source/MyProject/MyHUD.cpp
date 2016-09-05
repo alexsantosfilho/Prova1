@@ -43,6 +43,14 @@ void AMyHUD::DrawHUD() {
 		MyCharacter->GetLColetavel());
 	DrawText(LColetavelString, FColor::Blue, 50, 140, HUDFont);
 
+
+
+
+
+
+
+
+
 	
 
 

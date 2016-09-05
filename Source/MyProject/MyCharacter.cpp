@@ -141,11 +141,14 @@ int AMyCharacter::GetLColetavel() {
 }
 
 
+
+
 void AMyCharacter::OnDeath() {
 	if (Coletavel <= 0) {
 		FVector InitialLocation(-3426.8f, 89.0f, 128.0f);
 		Coletavel = 3;
 		SetActorLocation(InitialLocation);
+		UE_LOG(LogTemp, Warning, TEXT("Voce morreu!"));
 	}
 
 }

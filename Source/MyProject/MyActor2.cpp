@@ -68,27 +68,23 @@ void AMyActor2::Tick(float DeltaTime)
 	}
 
 
-	if (ObjetobTime2 > 3.5f) {
-		float DeltaWidth = (FMath::Sin(RunningTime4 + DeltaTime) - FMath::Sin(RunningTime4));
-		LocalizacaoAtual.Y += DeltaWidth * 150.0f;
-		RunningTime4 += DeltaTime;
+	if (LocalizacaoAtual.X){
+		float DeltaWidth = (FMath::Sin(RunningTime + DeltaTime) - FMath::Sin(RunningTime));
+		LocalizacaoAtual.X += DeltaWidth * 150.0f;
+		RunningTime += DeltaTime;
 		SetActorLocation(LocalizacaoAtual);
-		RunningTime4 = 0.0f;
-		//Destroy();
-
 	}
 
-	//if (ObjetobTime5 > 3.0f) {
-	//float DeltaWidth = (FMath::Sin(RunningTime5 + DeltaTime) - FMath::Sin(RunningTime5));
-	//LocalizacaoAtual.X += DeltaWidth * 150.0f;
-	//RunningTime5 += DeltaTime;
-	//SetActorLocation(LocalizacaoAtual);
-	//RunningTime5 = 0.0f;
-
-	//Destroy();
+		if (LocalizacaoAtual.Y) {
+			float DeltaWidth = (FMath::Sin(RunningTime2 + DeltaTime) - FMath::Sin(RunningTime2));
+			LocalizacaoAtual.Y += DeltaWidth * 150.0f;
+			RunningTime2 += DeltaTime;
+			SetActorLocation(LocalizacaoAtual);
+		}
 
 
-	//	}
+
+	
 
 }
 

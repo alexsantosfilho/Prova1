@@ -31,6 +31,9 @@ public:
 
 	void SetLColetavel(int NewLColetavel);
 	int GetLColetavel();
+
+	void SetInitialLocation(int NewInitialLocation);
+	int GetInitialLocation();
 	
 	void OnDeath();
 
